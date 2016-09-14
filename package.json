@@ -1,0 +1,26 @@
+{
+  "name": "cmd-v2-fed3-toets1",
+  "version": "1.0.0",
+  "description": "toets 1 voor het vak frontend 3",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "babel src -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morkvd/CMD-V2-FED3-toets1.git"
+  },
+  "keywords": [
+    "CMD"
+  ],
+  "author": "markvdijken@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/morkvd/CMD-V2-FED3-toets1/issues"
+  },
+  "homepage": "https://github.com/morkvd/CMD-V2-FED3-toets1#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0"
+  }
+}
