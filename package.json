@@ -4,12 +4,8 @@
   "description": "toets 1 voor het vak frontend 3",
   "main": "src/index.js",
   "scripts": {
-    "build": "npm run transpile:js && npm run min && npm run copy-rest",
-    "transpile:js": "babel src -d dist",
-    "min": "npm run min:html & npm run min:css",
-    "min:html": "minify src/index.html > dist/index.html",
-    "min:css": "minify src/style.css > dist/style.css",
-    "copy-rest": "ncp src/android-app-data.csv dist/android-app-data.csv"
+    "build": "npm run transpile:js",
+    "transpile:js": "babel src/chart.js --out-file src/chart-compiled.js --watch"
   },
   "repository": {
     "type": "git",
