@@ -22,8 +22,6 @@
   "homepage": "https://github.com/morkvd/CMD-V2-FED3-toets1#readme",
   "devDependencies": {
     "babel-cli": "^6.14.0",
-    "babel-preset-es2015": "^6.14.0",
-    "minify": "^2.0.11",
-    "ncp": "^2.0.0"
+    "babel-preset-es2015": "^6.14.0"
   }
 }
