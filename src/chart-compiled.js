@@ -12,7 +12,7 @@ var options = {
     height: 30,
     padding: 15
   },
-  labelNudge: 23,
+  labelNudge: 20,
   axisPosY: 100
 };
 
