@@ -16,13 +16,11 @@ const options = {
 
 d3.csv('android-app-data.csv', data => {
 
-  const sortedData = data.map(obj => {
-                            return Object.assign(obj, {
-                              AccessCount: Number.parseInt(obj.AccessCount, 10),
-                            });
-                          })
-                          .sort((a, b) => b.AccessCount - a.AccessCount)
-                          .slice(0, 19);
+  const sortedData = data.map(obj => Object.assign(obj, {
+                       AccessCount: Number.parseInt(obj.AccessCount, 10),
+                     })) // return new obj's where AccessCount are Numbers insead of strings
+                     .sort((a, b) => b.AccessCount - a.AccessCount) // sort on AccessCount (descending)
+                     .slice(0, 19); // select 18 highest values
 
   console.log(sortedData);
 
@@ -46,29 +44,45 @@ d3.csv('android-app-data.csv', data => {
     .data(sortedData)
     .enter().append('rect')
       .attr('y', (d, i) => {
-        return (
-          i * (options.bar.height + options.bar.padding) + options.chart.paddingY
-        );
+        return i * (options.bar.height + options.bar.padding) + options.chart.paddingY;
       })
       .attr('height', options.bar.height)
       .attr('width', d => xScale(d.AccessCount))
-      .attr('x', options.chart.labelRoom);
+      .attr('x', options.chart.labelRoom)
 
   chart.selectAll('g')
     .data(sortedData)
     .enter().append('text')
       .text(d => d.AppName)
       .attr('y', (d, i) => {
-        return (i * (options.bar.height + options.bar.padding) + options.chart.paddingY ) + options.labelNudge ;
+        return i * (options.bar.height + options.bar.padding) + options.chart.paddingY + options.labelNudge;
       })
       .attr('x', options.chart.labelRoom - options.chart.paddingX)
-      .attr('font-family', 'Verdana')
+      .attr('font-family', 'Arial')
       .attr('font-size', 20)
-      .attr('text-anchor', 'end')
-      .attr('width', 400);
+      .attr('text-anchor', 'end');
+
+  // chart.selectAll('rect')
+  //   .data(sortedData)
+  //   .append('text')
+  //     .text(d => d.AccessCount)
+  //     .attr('x', 0)
+  //     .attr('y', 0)
+  //     .attr('color', 'white')
+  //     .attr('font-family', 'Arial')
+  //     .attr('font-size', 20);
 
   chart.append("g").attr("class", "axis")
     .attr("transform", `translate(${options.chart.labelRoom}, ${options.axisPosY})`)
     .call(xAxis);
+
+
+  chart.selectAll('.axis')
+    .append('text')
+    .text('aantal keer geopend')
+    .attr('x', -options.chart.paddingX)
+    .attr('font-family', 'Arial')
+    .attr('font-size', 12)
+    .attr('text-anchor', 'end');;
 
 });

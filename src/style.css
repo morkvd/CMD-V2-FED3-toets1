@@ -1,6 +1,12 @@
 html {
 	background-color: #DDD;
+	font-family: Arial;
+}
+h1 {
+	text-align: center;
 }
 svg {
 	background-color: #FFF;
+	margin: 0 auto;
+	display: block;
 }

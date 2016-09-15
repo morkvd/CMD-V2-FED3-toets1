@@ -22,9 +22,11 @@ d3.csv('android-app-data.csv', function (data) {
     return Object.assign(obj, {
       AccessCount: Number.parseInt(obj.AccessCount, 10)
     });
-  }).sort(function (a, b) {
+  }) // return new obj's where AccessCount are Numbers insead of strings
+  .sort(function (a, b) {
     return b.AccessCount - a.AccessCount;
-  }).slice(0, 19);
+  }) // sort on AccessCount (descending)
+  .slice(0, 19); // select 18 highest values
 
   console.log(sortedData);
 
@@ -50,7 +52,19 @@ d3.csv('android-app-data.csv', function (data) {
     return d.AppName;
   }).attr('y', function (d, i) {
     return i * (options.bar.height + options.bar.padding) + options.chart.paddingY + options.labelNudge;
-  }).attr('x', options.chart.labelRoom - options.chart.paddingX).attr('font-family', 'Verdana').attr('font-size', 20).attr('text-anchor', 'end').attr('width', 400);
+  }).attr('x', options.chart.labelRoom - options.chart.paddingX).attr('font-family', 'Arial').attr('font-size', 20).attr('text-anchor', 'end');
+
+  // chart.selectAll('rect')
+  //   .data(sortedData)
+  //   .append('text')
+  //     .text(d => d.AccessCount)
+  //     .attr('x', 0)
+  //     .attr('y', 0)
+  //     .attr('color', 'white')
+  //     .attr('font-family', 'Arial')
+  //     .attr('font-size', 20);
 
   chart.append("g").attr("class", "axis").attr("transform", 'translate(' + options.chart.labelRoom + ', ' + options.axisPosY + ')').call(xAxis);
+
+  chart.selectAll('.axis').append('text').text('aantal keer geopend').attr('x', -options.chart.paddingX).attr('font-family', 'Arial').attr('font-size', 12).attr('text-anchor', 'end');;
 });
