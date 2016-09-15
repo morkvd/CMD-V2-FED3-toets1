@@ -66,5 +66,5 @@ d3.csv('android-app-data.csv', function (data) {
 
   chart.append("g").attr("class", "axis").attr("transform", 'translate(' + options.chart.labelRoom + ', ' + options.axisPosY + ')').call(xAxis);
 
-  chart.selectAll('.axis').append('text').text('aantal keer geopend').attr('x', -options.chart.paddingX).attr('font-family', 'Arial').attr('font-size', 12).attr('text-anchor', 'end');;
+  chart.selectAll('.axis').append('text').text('aantal keer geopend').attr('x', -options.chart.paddingX).attr('font-family', 'Arial').attr('font-size', 12).attr('text-anchor', 'end');
 });
