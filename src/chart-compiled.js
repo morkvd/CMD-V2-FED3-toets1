@@ -30,10 +30,6 @@ d3.csv('android-app-data.csv', function (data) {
 
   console.log(sortedData);
 
-  var yScale = d3.scale.linear().domain([0, sortedData.map(function (d) {
-    return d.AccessCount;
-  }).length * options.bar.height]).range([0, options.chart.height]);
-
   var xScale = d3.scale.linear().domain([0, d3.max(sortedData.map(function (d) {
     return d.AccessCount;
   }))]).range([0, options.chart.width]);
