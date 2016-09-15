@@ -54,15 +54,11 @@ d3.csv('android-app-data.csv', function (data) {
     return i * (options.bar.height + options.bar.padding) + options.chart.paddingY + options.labelNudge;
   }).attr('x', options.chart.labelRoom - options.chart.paddingX).attr('font-family', 'Arial').attr('font-size', 20).attr('text-anchor', 'end');
 
-  // chart.selectAll('rect')
-  //   .data(sortedData)
-  //   .append('text')
-  //     .text(d => d.AccessCount)
-  //     .attr('x', 0)
-  //     .attr('y', 0)
-  //     .attr('color', 'white')
-  //     .attr('font-family', 'Arial')
-  //     .attr('font-size', 20);
+  chart.selectAll('g').data(sortedData).enter().append('text').text(function (d) {
+    return d.AccessCount;
+  }).attr('y', function (d, i) {
+    return i * (options.bar.height + options.bar.padding) + options.chart.paddingY + options.labelNudge;
+  }).attr('x', options.chart.labelRoom + 10).attr('font-family', 'Arial').attr('font-size', 14).attr('fill', 'white');
 
   chart.append("g").attr("class", "axis").attr("transform", 'translate(' + options.chart.labelRoom + ', ' + options.axisPosY + ')').call(xAxis);
 

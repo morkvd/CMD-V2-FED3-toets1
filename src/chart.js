@@ -48,7 +48,7 @@ d3.csv('android-app-data.csv', data => {
       })
       .attr('height', options.bar.height)
       .attr('width', d => xScale(d.AccessCount))
-      .attr('x', options.chart.labelRoom)
+      .attr('x', options.chart.labelRoom);
 
   chart.selectAll('g')
     .data(sortedData)
@@ -62,15 +62,17 @@ d3.csv('android-app-data.csv', data => {
       .attr('font-size', 20)
       .attr('text-anchor', 'end');
 
-  // chart.selectAll('rect')
-  //   .data(sortedData)
-  //   .append('text')
-  //     .text(d => d.AccessCount)
-  //     .attr('x', 0)
-  //     .attr('y', 0)
-  //     .attr('color', 'white')
-  //     .attr('font-family', 'Arial')
-  //     .attr('font-size', 20);
+    chart.selectAll('g')
+      .data(sortedData)
+      .enter().append('text')
+        .text(d => d.AccessCount)
+        .attr('y', (d, i) => {
+          return i * (options.bar.height + options.bar.padding) + options.chart.paddingY + options.labelNudge;
+        })
+        .attr('x', options.chart.labelRoom + 10)
+        .attr('font-family', 'Arial')
+        .attr('font-size', 14)
+        .attr('fill', 'white');
 
   chart.append("g").attr("class", "axis")
     .attr("transform", `translate(${options.chart.labelRoom}, ${options.axisPosY})`)
